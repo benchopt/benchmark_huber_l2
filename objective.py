@@ -24,7 +24,9 @@ class Objective(BaseObjective):
         z = self.y - self.X @ coef - intercept
         outlier_mask = np.abs(z) < self.epsilon
         loss = np.sum(z[~outlier_mask] ** 2)
-        loss += np.sum(self.epsilon * (z[outlier_mask] ** 2) - self.epsilon ** 2)
+        loss += np.sum(
+            self.epsilon * (z[outlier_mask] ** 2) - self.epsilon ** 2
+        )
         return loss + self.lmbd * np.dot(coef, coef)
 
     def to_dict(self):
