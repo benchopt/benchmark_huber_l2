@@ -20,14 +20,16 @@ class Objective(BaseObjective):
         self.X, self.y = X, y
 
     def compute(self, params):
-        coef, intercept = params[1:], params[0]
-        z = self.y - self.X @ coef - intercept
-        outlier_mask = np.abs(z) < self.epsilon
-        loss = np.sum(z[~outlier_mask] ** 2)
-        loss += np.sum(
-            self.epsilon * (z[outlier_mask] ** 2) - self.epsilon ** 2
-        )
-        return loss + self.lmbd * np.dot(coef, coef)
+        intercept, scale, coef = params[0], params[1], params[2:]
+
+        z = np.abs(self.y - self.X @ coef - intercept) / scale
+        outlier_mask = z > self.epsilon
+        n_samples = len(self.X)
+        loss = np.empty(n_samples)
+        loss[~outlier_mask] = scale + z[~outlier_mask]**2 * scale
+        loss[outlier_mask] = scale + (
+            2 * self.epsilon * z[outlier_mask] - self.epsilon**2) * scale
+        return loss.sum() + self.lmbd * np.dot(coef, coef)
 
     def to_dict(self):
         return dict(X=self.X, y=self.y, lmbd=self.lmbd, epsilon=self.epsilon)

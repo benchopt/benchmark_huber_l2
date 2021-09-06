@@ -35,4 +35,4 @@ class Solver(BaseSolver):
         self.clf.fit(self.X, self.y)
 
     def get_result(self):
-        return np.r_[self.clf.intercept_, self.clf.coef_]
+        return np.r_[self.clf.intercept_, self.clf.scale_, self.clf.coef_]
