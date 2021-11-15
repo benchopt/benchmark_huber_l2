@@ -8,7 +8,7 @@ This benchmark is dedicated to solver of **describe your problem**:
 
 .. math::
 
-  \min_{w, \sigma} {\sum_{i=1}^n\left(\sigma + H_{\epsilon}\left(\frac{X_{i}w - y_{i}}{\sigma}\right)\sigma\right) + \alpha {||w||_2}^2}
+  \min_{w, \sigma} {\sum_{i=1}^n\left(\sigma + H_{\epsilon}\left(\frac{X_{i}w - y_{i}}{\sigma}\right)\sigma\right) + \alpha {\|w\|_2}^2}
 
 where n (or n_samples) stands for the number of samples, p (or n_features) stands for the number of features
 
