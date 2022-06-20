@@ -15,7 +15,9 @@ $$y \\in \\mathbb{R}^n, \\quad X \\in \\mathbb{R}^{n \\times p}$$
 
 and
 
-$$H_{\\epsilon}(z) = \\begin{cases} z^2, & \\text {if } |z| < \\epsilon, \\\\ 2\\epsilon|z| - \\epsilon^2, & \\text{otherwise}\\end{cases}$$
+$$
+H_{\\epsilon}(z) = \\begin{cases} z^2 & \\text {if } \\vert z \\vert < \\epsilon, \\\\ 2 \\epsilon \\vert z \\vert - \\epsilon^2 & \\text{otherwise} \\end{cases}
+$$
 
 
 Install
