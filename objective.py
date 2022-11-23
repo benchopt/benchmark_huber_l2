@@ -5,6 +5,7 @@ with safe_import_context() as import_ctx:
 
 
 class Objective(BaseObjective):
+    min_benchopt_version = "1.3"
     name = "Huber Regression with L2 regularization"
 
     parameters = {
