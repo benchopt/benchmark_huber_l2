@@ -5,6 +5,7 @@ with safe_import_context() as import_ctx:
 
 
 class Objective(BaseObjective):
+    min_benchopt_version = "1.3"
     name = "Huber Regression with L2 regularization"
 
     parameters = {
@@ -31,5 +32,5 @@ class Objective(BaseObjective):
             2 * self.epsilon * z[outlier_mask] - self.epsilon**2) * scale
         return loss.sum() + self.lmbd * np.dot(coef, coef)
 
-    def to_dict(self):
+    def get_objective(self):
         return dict(X=self.X, y=self.y, lmbd=self.lmbd, epsilon=self.epsilon)
