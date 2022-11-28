@@ -1,5 +1,5 @@
-My Benchopt Benchmark
-=====================
+Benchmark for L2-regularized Huber regression
+=============================================
 |Build Status| |Python 3.6+|
 
 Benchopt is a package to simplify and make more transparent and
